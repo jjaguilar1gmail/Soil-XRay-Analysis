@@ -4,8 +4,8 @@ import plotly.express as px
 import numpy as np
 
 # Load the data
-df1 = pd.read_csv('../data/precomputed_soil_stats.csv')
-df2 = pd.read_csv('../data/precomputed_soil_stats_depth_binned.csv')
+df1 = pd.read_csv('data/precomputed_soil_stats.csv')
+df2 = pd.read_csv('data/precomputed_soil_stats_depth_binned.csv')
 
 defaults1 = ["skew_mean","kurt_mean","edge_mean","tillage-fertilizer","tiff_index","stack_index",0]
 defaults2 = ["tillage-fertilizer","kurt_mean_mean","edge_mean_mean","min_depth","min_depth","stack_index",2]
