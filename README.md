@@ -95,5 +95,5 @@ This repository does not contain the x-ray scans themselves, to use the code fou
 
 The folder and file naming convention is important to how the library parses and indexes the scans and tiff files. **For soil scan folders**, make sure the folder name is divided by underscores. The library takes the second to last underscore-seperated section and gets the number to assign the index. For example: 20210501Sbz_VBCSoilCores7_39um, its scan (or stack for tiff stack) index will be 7. **For file names**, it will use the last four digits before the extension for the image file's index. For example: 20210501_VBCsoilcore_7_39um 3_0002.tif will have an index of 2. Useful for ordering and assigning depth.
 
-Notebooks N1, N2, N3 and N5 all make computations that require access to raw xrays. However, for the x-ray data used in this analysis, I have provided procomputed metrics for further analysis and inspection without need for access to raw xrays (see notebooks N4 and N4b).
+Notebooks N1, N2, N3 and N5 all make computations that require access to raw xrays. However, for the x-ray data used in this analysis, I have provided precomputed metrics for further analysis and inspection without need for access to raw xrays (see notebooks N4 and N4b).
 See requirements.txt for required libraries.
