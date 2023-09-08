@@ -11,13 +11,13 @@ The soils are divided into two different practices each of tillage (chisel till 
 - `data/`: Contains raw and processed data
   - `meta.csv`: Metadata about scans
   - `precomputed_soil_stats*.csv`: Precomputed metrics
-  - `sample_images/`: Example scan slices
-  - `sample_images_recompute/`: Scans for recomputing metrics
+  - `sample_images/`: Sample decimated horizontal xray slices
+  - `sample_images_recompute/`: Folder for recomputing sample decimated horizontal xray slices.
 - `notebooks/`: Jupyter notebooks for analysis
   - `N1_Basics.ipynb`: Initial processing
-  - `N2_Local_Stats.ipynb`: Density calculation
-  - `N3_Batch_Calculate_Soil_Statistics.ipynb`: Metric computation
-  - `N4_Statistical_Metrics_Data_Analysis.ipynb`: Statistical analysis
+  - `N2_Local_Stats.ipynb`: Local heterogeneity metrics
+  - `N3_Batch_Calculate_Soil_Statistics.ipynb`: Metric computation for all datasets
+  - `N4_Statistical_Metrics_Data_Analysis.ipynb`: Statistical analysis of computed metrics
   - 'N4b_Soil_Metrics_vs_XRay_Images.ipynb': Visualize xray slices vs computed metrics
   - `N5_Appendix_Segmentation.ipynb`: Image segmentation
 - `slides/`: PDF slides explaining analysis 
