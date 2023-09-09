@@ -14,7 +14,7 @@ The soils are divided into two different practices each of tillage (chisel till 
   - `sample_images/`: Sample decimated horizontal xray slices
   - `sample_images_recompute/`: Folder for recomputing sample decimated horizontal xray slices.
 - `notebooks/`: Jupyter notebooks for analysis
-  - `N1_Basics.ipynb`: Initial processing
+  - `N1_Basics.ipynb`: Initial processing, density calculations
   - `N2_Local_Stats.ipynb`: Local heterogeneity metrics
   - `N3_Batch_Calculate_Soil_Statistics.ipynb`: Metric computation for all datasets
   - `N4_Statistical_Metrics_Data_Analysis.ipynb`: Statistical analysis of computed metrics
