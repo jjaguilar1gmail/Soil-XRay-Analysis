@@ -1,6 +1,6 @@
 # Soil-XRay-Analysis: Soil Density and Heterogeneity Analysis
 
-This repository contains code to analyze local soil density from x-ray scans and characterize soil heterogeneity using statistical metrics like skewness, kurtosis, and Sobel edge detection. The analysis explores differences in soil structure across various soil treatments and management practices. The scanned soils cores that were analyzed for this project are from a long-term experiment at the North Agronomy Farm of Kansas State University in Manhattan, KS. For more info on data from that experiment:
+This repository contains code to analyze local soil density from x-ray scans and characterize soil heterogeneity using statistical metrics like skewness, kurtosis, and Sobel edge detection. The analysis explores differences in soil structure across various soil treatments and management practices. The soil cores analyzed for this project are from a long-term experiment at the North Agronomy Farm of Kansas State University in Manhattan, KS. For more info on data from that experiment:
 
 Nicoloso, Rodrigo S., et al. "Carbon saturation and translocation in a no-till soil under organic amendments." Agriculture, Ecosystems & Environment 264 (2018): 73-84.
 
