@@ -1,6 +1,6 @@
 # Soil-XRay-Analysis: Soil Density and Heterogeneity Analysis
 
-This repository contains code to analyze local soil density from x-ray scans and characterize soil heterogeneity using statistical metrics like skewness, kurtosis, and Sobel edge detection. The analysis explores differences in soil structure across various soil treatments and management practices. The scanned soils cores that were analyzed for this project are from a long-term experiment at the North Agronomy Farm of Kansas State University in Manhattan, KS. For more info on data from that experiment:
+This repository contains code to analyze local soil density from x-ray scans and characterize soil heterogeneity using statistical metrics like skewness, kurtosis, and Sobel edge detection. The analysis explores differences in soil structure across various soil treatments and management practices. The soil cores analyzed for this project are from a long-term experiment at the North Agronomy Farm of Kansas State University in Manhattan, KS. For more info on data from that experiment:
 
 Nicoloso, Rodrigo S., et al. "Carbon saturation and translocation in a no-till soil under organic amendments." Agriculture, Ecosystems & Environment 264 (2018): 73-84.
 
@@ -14,7 +14,7 @@ The soils are divided into two different practices each of tillage (chisel till 
   - `sample_images/`: Sample decimated horizontal xray slices
   - `sample_images_recompute/`: Folder for recomputing sample decimated horizontal xray slices.
 - `notebooks/`: Jupyter notebooks for analysis
-  - `N1_Basics.ipynb`: Initial processing
+  - `N1_Basics.ipynb`: Initial processing, density calculations
   - `N2_Local_Stats.ipynb`: Local heterogeneity metrics
   - `N3_Batch_Calculate_Soil_Statistics.ipynb`: Metric computation for all datasets
   - `N4_Statistical_Metrics_Data_Analysis.ipynb`: Statistical analysis of computed metrics
@@ -80,7 +80,7 @@ jupyter notebook
 Once done, you can deactivate the virtual environment with the `deactivate` command.
 
 ### IMPORTANT: 
-This repository does not contain the x-ray scans themselves, to use the code found in the notebooks used here to process raw x-ray scans, the load_process module of the provided xray_stats library has many functions to access the xray scans, process statistics and visualize. This code assumes the xray data is located on a locally accessible directory (if the files need to be accessed remotely through ftp, sftp or other such protocol, significant modifications to the code are required). The location of all these files is by default set to **path_to_tiff_folders="/Volumes/FreeAgent GoFlex Drive/DanforthXRAYData/"** in the xray_stats/load_process library. *Make sure to change this to the correct location of the xray data by editing get_tiff_stack in load_process.py prior to running any notebook cells that access raw x-ray images.* The structure should look as follows:
+This repository does not contain the x-ray scans themselves, to use the code found in the notebooks which process raw x-ray scans, the load_process module of the provided xray_stats library has many functions to access the xray scans, process statistics and visualize. This code assumes the xray data is located on a locally accessible directory (if the files need to be accessed remotely through ftp, sftp or other such protocol, significant modifications to the code are required). The location of all these files is by default set to **path_to_tiff_folders="/Volumes/FreeAgent GoFlex Drive/DanforthXRAYData/"** in the xray_stats/load_process library. *Make sure to change this to the correct location of the xray data by editing get_tiff_stack in load_process.py prior to running any notebook cells that access raw x-ray images.* The structure should look as follows:
 
 - path_to_tiff_folders/
     - Scan_Number1_39um/
