@@ -83,22 +83,38 @@ style_help = "3D scatter uses x, y, and z columns, along with color, size, and h
              "The box plot uses the y-axis data for generating the boxplots, " \
              "x-axis for x-categories, and color to group within each category."
 
-plot_style = st.selectbox("Plot style", ["3D Scatter", "Scatter", "BoxPlot"], index = default_cols[6], help = style_help)
+plot_style = st.selectbox("Plot style", ["3D Scatter", "Scatter", "Errorbar Plot", "BoxPlot"], index = default_cols[6], help = style_help)
+df_to_plot = df_plot.copy()
+if (data_selection == 'Per Tiff Metrics') and (('norm' in x_column) or ('norm' in y_column) or ('norm' in z_column) or ('norm' in color_column)):
+    df_to_plot = df_to_plot[df_to_plot['stack_index']!=30]
 # Create the plot
 if plot_style=="Scatter":
     if isinstance(size, str):
-        fig = px.scatter(df_plot, x=x_column, y=y_column, color=color_column, hover_name=hover_column, color_continuous_scale=['#5FC2EE', '#F08A6C'],color_discrete_sequence=px.colors.qualitative.G10, size = size)
+        fig = px.scatter(df_to_plot, x=x_column, y=y_column, color=color_column, hover_name=hover_column, color_continuous_scale=['#5FC2EE', '#F08A6C'],color_discrete_sequence=px.colors.qualitative.G10, size = size)
     else:
-        fig = px.scatter(df_plot, x=x_column, y=y_column, color=color_column, hover_name=hover_column, color_continuous_scale=['#5FC2EE', '#F08A6C'],color_discrete_sequence=px.colors.qualitative.G10, size = np.full(len(df_plot), size), size_max=size)
+        fig = px.scatter(df_to_plot, x=x_column, y=y_column, color=color_column, hover_name=hover_column, color_continuous_scale=['#5FC2EE', '#F08A6C'],color_discrete_sequence=px.colors.qualitative.G10, size = np.full(len(df_to_plot), size), size_max=size)
     fig.update_traces(marker=dict(opacity=1, line=dict(width=0)))
 elif plot_style=="3D Scatter":
     if isinstance(size, str):
-        fig = px.scatter_3d(df_plot, x=x_column, y=y_column, z=z_column, color=color_column, hover_name=hover_column, color_continuous_scale=['#5FC2EE', '#F08A6C'],color_discrete_sequence=px.colors.qualitative.G10, size = size)
+        fig = px.scatter_3d(df_to_plot, x=x_column, y=y_column, z=z_column, color=color_column, hover_name=hover_column, color_continuous_scale=['#5FC2EE', '#F08A6C'],color_discrete_sequence=px.colors.qualitative.G10, size = size)
     else:
-        fig = px.scatter_3d(df_plot, x=x_column, y=y_column, z=z_column, color=color_column, hover_name=hover_column, color_continuous_scale=['#5FC2EE', '#F08A6C'],color_discrete_sequence=px.colors.qualitative.G10, size = np.full(len(df_plot), size), size_max=size)
+        fig = px.scatter_3d(df_to_plot, x=x_column, y=y_column, z=z_column, color=color_column, hover_name=hover_column, color_continuous_scale=['#5FC2EE', '#F08A6C'],color_discrete_sequence=px.colors.qualitative.G10, size = np.full(len(df_to_plot), size), size_max=size)
     fig.update_traces(marker=dict(opacity=1, line=dict(width=0)))
+elif plot_style == "Errorbar Plot":
+    # Calculate average and standard deviation for each x-value and color
+    
+    avg_std_data = df_to_plot.groupby([x_column, color_column])[y_column].agg(['mean', 'std']).reset_index()
+
+    fig = px.scatter(avg_std_data, x=x_column, y='mean', color=color_column,
+                     color_continuous_scale=['#5FC2EE', '#F08A6C'], color_discrete_sequence=px.colors.qualitative.G10,
+                     error_y='std')
+
+    fig.update_traces(marker=dict(opacity=1, line=dict(width=0)))
+    fig.update_layout(title=f'{y_column} Average with Standard Deviation')
+    fig.update_xaxes(title_text=x_column)
+    fig.update_yaxes(title_text=f'Average {y_column}')
 else:
-    fig = px.box(df_plot, x=x_column, y=y_column, color=color_column, color_discrete_sequence=px.colors.qualitative.G10)
+    fig = px.box(df_to_plot, x=x_column, y=y_column, color=color_column, color_discrete_sequence=px.colors.qualitative.G10)
 
 
 # Display the plot
