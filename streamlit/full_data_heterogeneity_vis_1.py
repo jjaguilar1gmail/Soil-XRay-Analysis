@@ -110,7 +110,7 @@ elif plot_style == "Errorbar Plot":
                      error_y='std')
 
     fig.update_traces(marker=dict(opacity=1, line=dict(width=0)))
-    fig.update_layout(title=f'{y_column} Average with Standard Deviation')
+    fig.update_layout(title=f'{y_column} Mean with Standard Deviation')
     fig.update_xaxes(title_text=x_column)
     fig.update_yaxes(title_text=f'Average {y_column}')
 else:
